@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useDispatch, useSelector } from 'react-redux'
+import { incrementNumberAction } from './store/numberReducer'
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// eslint-disable-next-line react-hooks/rules-of-hooks
+const num = useSelector(num => num.num.num)
+// eslint-disable-next-line react-hooks/rules-of-hooks
+const dispatch = useDispatch()
+
+const insrementNum = num => {
+	dispatch(incrementNumberAction(num))
 }
 
-export default App;
+function App() {
+	return (
+		<div>
+			<div onChange={insrementNum}>{num}</div>
+		</div>
+	)
+}
+
+export default App
